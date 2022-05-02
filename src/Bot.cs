@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace tic_tac_toe_oop
 {
-    public class Bot
+    public class Bot:Player
     {
         public Bot() : base() { }
         public override string ToString()
@@ -14,10 +14,20 @@ namespace tic_tac_toe_oop
             return "Bot";
         }
 
-        public void Move(Board board)
+        public override void Move(Board board)
         {
             Random random = new Random();
-            board.MarkShot(random.Next(board.GetSize()), random.Next(board.GetSize()), BoardField.X);
+            int x, y;
+            do
+            {
+                x = random.Next(board.GetSize());
+                y = random.Next(board.GetSize());
+
+            } while (board.map[x, y] != BoardField.EMPTY);
+            board.MarkShot(x,y,BoardField.X);
+            
+            
         }
+
     }
 }

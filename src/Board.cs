@@ -21,6 +21,7 @@ namespace tic_tac_toe_oop
         {
             return size;
         }
+        public BoardField[,] map => Map;
         public Board(int size)
         {
             this.size = size;
